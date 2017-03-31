@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6AEC31AF1E8C39FB00B575DF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC31AE1E8C39FB00B575DF /* main.c */; };
+		6AEC31B71E8C3C0500B575DF /* Composite_Simpson.c in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC31B61E8C3C0500B575DF /* Composite_Simpson.c */; };
+		6AEC31B91E8C3D3100B575DF /* Theta_SpaceAverage.c in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC31B81E8C3D3100B575DF /* Theta_SpaceAverage.c */; };
+		6AEC31BB1E8C421E00B575DF /* Inst_WallSuperheat.c in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC31BA1E8C421E00B575DF /* Inst_WallSuperheat.c */; };
+		6AEC31BD1E8C552000B575DF /* U0Effect.c in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC31BC1E8C552000B575DF /* U0Effect.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,11 @@
 /* Begin PBXFileReference section */
 		6AEC31AB1E8C39FB00B575DF /* A_Quenching_HighHeatFlux_TimeSpaceDependentVelocity */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = A_Quenching_HighHeatFlux_TimeSpaceDependentVelocity; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEC31AE1E8C39FB00B575DF /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		6AEC31B51E8C3BDF00B575DF /* share.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = share.h; sourceTree = "<group>"; };
+		6AEC31B61E8C3C0500B575DF /* Composite_Simpson.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Composite_Simpson.c; sourceTree = "<group>"; };
+		6AEC31B81E8C3D3100B575DF /* Theta_SpaceAverage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Theta_SpaceAverage.c; sourceTree = "<group>"; };
+		6AEC31BA1E8C421E00B575DF /* Inst_WallSuperheat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Inst_WallSuperheat.c; sourceTree = "<group>"; };
+		6AEC31BC1E8C552000B575DF /* U0Effect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = U0Effect.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,11 @@
 			isa = PBXGroup;
 			children = (
 				6AEC31AE1E8C39FB00B575DF /* main.c */,
+				6AEC31BC1E8C552000B575DF /* U0Effect.c */,
+				6AEC31B81E8C3D3100B575DF /* Theta_SpaceAverage.c */,
+				6AEC31BA1E8C421E00B575DF /* Inst_WallSuperheat.c */,
+				6AEC31B61E8C3C0500B575DF /* Composite_Simpson.c */,
+				6AEC31B51E8C3BDF00B575DF /* share.h */,
 			);
 			path = A_Quenching_HighHeatFlux_TimeSpaceDependentVelocity;
 			sourceTree = "<group>";
@@ -119,7 +133,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AEC31B91E8C3D3100B575DF /* Theta_SpaceAverage.c in Sources */,
 				6AEC31AF1E8C39FB00B575DF /* main.c in Sources */,
+				6AEC31BD1E8C552000B575DF /* U0Effect.c in Sources */,
+				6AEC31B71E8C3C0500B575DF /* Composite_Simpson.c in Sources */,
+				6AEC31BB1E8C421E00B575DF /* Inst_WallSuperheat.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
