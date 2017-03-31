@@ -23,7 +23,8 @@ double Theta_SpaceAverage(double tau);
 
 double Inst_WallSuperheat(double X);
 double U0Effect (double U);
+double BRENT (double a,double b,double tol,double (*func) (double));
 
 
 
-extern double U0,tau_star,tau_global,D;
+extern double U0,tau_star,tau_global,D,theta_exp;

@@ -15,17 +15,15 @@
 #include "share.h"
 
 
-double U0,tau_star,tau_global,D;
+double U0,tau_star,tau_global,D,theta_exp;
 
 
 int main(int argc, const char * argv[]) {
     
     // Properties
-    double rhol,cpl,kl,al,t0,R,qw_pp,dtw;
+    double rhol,cpl,kl,al,t0,R,qw_pp,dtw,t_w,npp,xi;
     
     double temp,theta_ave;
-    
-    double theta_exp;
     
     rhol=958.5;
     cpl=4217.;
@@ -39,25 +37,26 @@ int main(int argc, const char * argv[]) {
     f_in=fopen("input.dat", "r");
     f_out=fopen("output.csv", "w");
     
-    while (fscanf(f_in, "%lf %lf %lf %lf",&R,&t0,&qw_pp,&dtw)!=EOF) {
+    fprintf(f_out, "%s,%s,%s,%s,%s,%s,%s,%s,%s\n","D_b (m)","t_0(s)","qw_pp(w/m^2)","dtw(K)","t_w(s)","n(1/m^2)","theta","U0","xi");
+    printf("%s,%s,%s,%s,%s,%s,%s,%s,%s\n","D_b (m)","t_0(s)","qw_pp(w/m^2)","dtw(K)","t_w(s)","n(1/m^2)","theta","U0","xi");
+    
+    while (fscanf(f_in, "%lf %lf %lf %lf %lf %lf",&R,&t0,&qw_pp,&dtw,&t_w,&npp)!=EOF) {
         
         R=R/1000./2.;
         t0/=1000.;
         qw_pp*=1000.;
         D=al*t0/pow(R, 2.);
         theta_exp=kl*dtw/qw_pp/R;
+        t_w/=1000.;
+        npp*=1.e4;
+
+        U0=BRENT(0.1, 40., 1.e-6, U0Effect);
         
-        fprintf(f_out, "%s,%s,%s,%s\n","D_b/2 (m)","t_0(s)","qw_pp(w/m^2)","dtw(K)");
-        fprintf(f_out, "%f,%f,%f,%f\n",R,t0,qw_pp,dtw);
-        fprintf(f_out, "Experimental Wall Superheat: %f\n",theta_exp);
-        fprintf(f_out, "%s,%s,%s\n","U0","Theta","U0*R/t0");
-        for (int i=1; i<=91; i++) {
-            temp=1.e-5+(i-1)*5./10;
-            theta_ave=U0Effect(temp);
-            fprintf(f_out, "%f,%f,%f\n",temp,theta_ave,temp*R/t0);
-        }
-        fprintf(f_out, "================================================================\n");
-        printf("%f\t%f\t%f\t%f\n",R,t0,qw_pp,dtw);
+        xi=U0/(npp*t0/t_w);
+        
+        fprintf(f_out, "%f,%f,%f,%f,%f,%f,%f,%f,%f\n",R*2.,t0,qw_pp,dtw,t_w,npp,theta_exp,U0,xi);
+        printf("%f,%f,%f,%f,%f,%f,%f,%f,%f\n",R*2.,t0,qw_pp,dtw,t_w,npp,theta_exp,U0,xi);
+
     }
     
     

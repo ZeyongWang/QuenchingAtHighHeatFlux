@@ -12,6 +12,7 @@
 		6AEC31B91E8C3D3100B575DF /* Theta_SpaceAverage.c in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC31B81E8C3D3100B575DF /* Theta_SpaceAverage.c */; };
 		6AEC31BB1E8C421E00B575DF /* Inst_WallSuperheat.c in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC31BA1E8C421E00B575DF /* Inst_WallSuperheat.c */; };
 		6AEC31BD1E8C552000B575DF /* U0Effect.c in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC31BC1E8C552000B575DF /* U0Effect.c */; };
+		6AF415EA1E8D9B62002DC9F0 /* BRENT.c in Sources */ = {isa = PBXBuildFile; fileRef = 6AF415E91E8D9B62002DC9F0 /* BRENT.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,7 @@
 		6AEC31B81E8C3D3100B575DF /* Theta_SpaceAverage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Theta_SpaceAverage.c; sourceTree = "<group>"; };
 		6AEC31BA1E8C421E00B575DF /* Inst_WallSuperheat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Inst_WallSuperheat.c; sourceTree = "<group>"; };
 		6AEC31BC1E8C552000B575DF /* U0Effect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = U0Effect.c; sourceTree = "<group>"; };
+		6AF415E91E8D9B62002DC9F0 /* BRENT.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BRENT.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				6AEC31AE1E8C39FB00B575DF /* main.c */,
+				6AF415E91E8D9B62002DC9F0 /* BRENT.c */,
 				6AEC31BC1E8C552000B575DF /* U0Effect.c */,
 				6AEC31B81E8C3D3100B575DF /* Theta_SpaceAverage.c */,
 				6AEC31BA1E8C421E00B575DF /* Inst_WallSuperheat.c */,
@@ -136,6 +139,7 @@
 				6AEC31B91E8C3D3100B575DF /* Theta_SpaceAverage.c in Sources */,
 				6AEC31AF1E8C39FB00B575DF /* main.c in Sources */,
 				6AEC31BD1E8C552000B575DF /* U0Effect.c in Sources */,
+				6AF415EA1E8D9B62002DC9F0 /* BRENT.c in Sources */,
 				6AEC31B71E8C3C0500B575DF /* Composite_Simpson.c in Sources */,
 				6AEC31BB1E8C421E00B575DF /* Inst_WallSuperheat.c in Sources */,
 			);
@@ -264,6 +268,7 @@
 				6AEC31B41E8C39FB00B575DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
