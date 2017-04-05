@@ -37,8 +37,13 @@ int main(int argc, const char * argv[]) {
     f_in=fopen("input.dat", "r");
     f_out=fopen("output.csv", "w");
     
-    fprintf(f_out, "%s,%s,%s,%s,%s,%s,%s,%s,%s\n","D_b (m)","t_0(s)","qw_pp(w/m^2)","dtw(K)","t_w(s)","n(1/m^2)","theta","U0","xi");
-    printf("%s,%s,%s,%s,%s,%s,%s,%s,%s\n","D_b (m)","t_0(s)","qw_pp(w/m^2)","dtw(K)","t_w(s)","n(1/m^2)","theta","U0","xi");
+    // CASE1: Given wall superheat, solve for U0 and xi
+//    fprintf(f_out, "%s,%s,%s,%s,%s,%s,%s,%s,%s\n","D_b (m)","t_0(s)","qw_pp(w/m^2)","dtw(K)","t_w(s)","n(1/m^2)","theta","U0","xi");
+//    printf("%s,%s,%s,%s,%s,%s,%s,%s,%s\n","D_b (m)","t_0(s)","qw_pp(w/m^2)","dtw(K)","t_w(s)","n(1/m^2)","theta","U0","xi");
+    
+    // CASE2: Given U0, solve for wall superheat
+    fprintf(f_out,"%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n","D_b (m)","t_0(s)","qw_pp(w/m^2)","dtw(K)","t_w(s)","n(1/m^2)","theta_exp","theta_cal","Error","U0","xi");
+    printf("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n","D_b (m)","t_0(s)","qw_pp(w/m^2)","dtw(K)","t_w(s)","n(1/m^2)","theta_exp","theta_cal","Error","U0","xi");
     
     while (fscanf(f_in, "%lf %lf %lf %lf %lf %lf",&R,&t0,&qw_pp,&dtw,&t_w,&npp)!=EOF) {
         
@@ -50,13 +55,19 @@ int main(int argc, const char * argv[]) {
         t_w/=1000.;
         npp*=1.e4;
 
-        U0=BRENT(0.1, 40., 1.e-6, U0Effect);
+        // CASE1: Given wall superheat, solve for U0 and xi
+//        U0=BRENT(0.1, 40., 1.e-6, U0Effect);
+//        xi=U0/(npp*t0/t_w);
+//        fprintf(f_out, "%f,%f,%f,%f,%f,%f,%f,%f,%f\n",R*2.,t0,qw_pp,dtw,t_w,npp,theta_exp,U0,xi);
+//        printf("%f,%f,%f,%f,%f,%f,%f,%f,%f\n",R*2.,t0,qw_pp,dtw,t_w,npp,theta_exp,U0,xi);
         
-        xi=U0/(npp*t0/t_w);
-        
-        fprintf(f_out, "%f,%f,%f,%f,%f,%f,%f,%f,%f\n",R*2.,t0,qw_pp,dtw,t_w,npp,theta_exp,U0,xi);
-        printf("%f,%f,%f,%f,%f,%f,%f,%f,%f\n",R*2.,t0,qw_pp,dtw,t_w,npp,theta_exp,U0,xi);
-
+        // CASE2: Given U0, solve for wall superheat
+        xi=0.15;
+        U0=xi*npp*t0/t_w;
+        theta_ave=ComSimpInt(Theta_SpaceAverage, 0., 1., 200);
+        temp=fabs((theta_ave-theta_exp)/theta_exp);
+        fprintf(f_out, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f\n",R*2.,t0,qw_pp,dtw,t_w,npp,theta_exp,theta_ave,temp, U0,xi);
+        printf("%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f\n",R*2.,t0,qw_pp,dtw,t_w,npp,theta_exp,theta_ave,temp, U0,xi);
     }
     
     
