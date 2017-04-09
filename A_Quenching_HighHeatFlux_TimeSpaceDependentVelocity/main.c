@@ -74,7 +74,6 @@ int main(int argc, const char * argv[]) {
     
     fclose(f_in);
     fclose(f_out);
-    // insert code here...
     printf("Hello, World!\n");
     return 0;
 }
