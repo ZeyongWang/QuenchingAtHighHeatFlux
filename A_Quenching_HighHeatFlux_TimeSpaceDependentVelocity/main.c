@@ -37,9 +37,10 @@ int main(int argc, const char * argv[]) {
     f_in=fopen("input.dat", "r");
     f_out=fopen("output.csv", "w");
     
-    fprintf(f_out, "%s,%s,%s,%s,%s,%s,%s,%s,%s\n","D_b (m)","t_0(s)","qw_pp(w/m^2)","dtw(K)","t_w(s)","n(1/m^2)","theta","U0","xi");
-    printf("%s,%s,%s,%s,%s,%s,%s,%s,%s\n","D_b (m)","t_0(s)","qw_pp(w/m^2)","dtw(K)","t_w(s)","n(1/m^2)","theta","U0","xi");
+    fprintf(f_out, "%12s,%12s,%12s,%12s,%12s,%12s,%12s,%12s,%12s\n","D_b (m)","t_0(s)","qw_pp(w/m^2)","dtw(K)","t_w(s)","n(1/m^2)","theta","U0","xi");
+    printf("%12s,%12s,%12s,%12s,%12s,%12s,%12s,%12s,%12s\n","D_b (m)","t_0(s)","qw_pp(w/m^2)","dtw(K)","t_w(s)","n(1/m^2)","theta","U0","xi");
     
+    int i=1;
     while (fscanf(f_in, "%lf %lf %lf %lf %lf %lf",&R,&t0,&qw_pp,&dtw,&t_w,&npp)!=EOF) {
         
         R=R/1000./2.;
@@ -52,11 +53,17 @@ int main(int argc, const char * argv[]) {
 
         U0=BRENT(0.1, 40., 1.e-6, U0Effect);
         
-        xi=U0/(npp*t0/t_w);
+//        xi=U0/(npp*t0/t_w);
+        xi=U0/(pow(npp, 3./2.)*t0);
+        xi=U0/(pow(npp, 3./2.));
+        xi=U0/(pow(npp, 3./2.)*t0/t_w);
         
-        fprintf(f_out, "%f,%f,%f,%f,%f,%f,%f,%f,%f\n",R*2.,t0,qw_pp,dtw,t_w,npp,theta_exp,U0,xi);
-        printf("%f,%f,%f,%f,%f,%f,%f,%f,%f\n",R*2.,t0,qw_pp,dtw,t_w,npp,theta_exp,U0,xi);
-
+        fprintf(f_out, "%12.4e,%12.4e,%12.4e,%12.4e,%12.4e,%12.4e,%12.4e,%12.4e,%12.4e\n",R*2.,t0,qw_pp,dtw,t_w,npp,theta_exp,U0,xi);
+        printf("%12.4e,%12.4e,%12.4e,%12.4e,%12.4e,%12.4e,%12.4e,%12.4e,%12.4e\n",R*2.,t0,qw_pp,dtw,t_w,npp,theta_exp,U0,xi);
+        if ((i==4) || (i==8)) {
+            printf("====================================================================================================================\n");
+        }
+        i++;
     }
     
     
